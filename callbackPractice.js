@@ -39,7 +39,7 @@ var first = function(arr, cb){  //passin in names array and funciton below(cb)
   cb(firstOne);            // passing index 0 (var) into cb func
 }
 
-first(names, function(firstName){  //invoke function-first, 
+first(names, function(firstName){  //invoke function-first, this is the callback funciton being passed in!
   console.log('The first name in names is ' + firstName);  
 });
 
@@ -57,7 +57,7 @@ first(names, function(firstName){  //invoke function-first,
 //});
 
 var last = function(arr, cb) {
-  var lastOne = (arr[arr.length -1]);
+  var lastOne = (arr[arr.length -1]); 
   cb(lastOne);
 }
 
@@ -82,7 +82,7 @@ var multiply = function(num1, num2, cb) {
 }
 
 
-multiply(4, 3, function(answer){
+multiply(4, 3, function(answer){   //being passed 2 numbers and function that needs an answer, we need mult function
  console.log('The answer is ' + answer); //should console.log 12
 });
 
@@ -90,9 +90,13 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
-
-  var contains = function(arr, name, cb) {
-       
+///////////////
+var contains = function(arr, name, cb) {
+    var result = false;
+      if (arr.indexOf(name) !== -1){
+        result = true 
+      } 
+        cb(result);
   }
 
 contains(names, 'Colt', function(result){
@@ -164,10 +168,16 @@ each(names, function(item, indice){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
-
-
  //code here for getUserById
+
+function(arr,id, cb){
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i].id === id) {
+      cb(arr[i]);
+      break;
+    }
+  }
+} 
 
 var users = [
   {
